@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
-
+// Get all posts and JOIN with user data
 router.get('/', async (req, res) => {
   try {
     const postSeed = await Post.findAll({
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-
+  // Serialize data so the template can read it
     const posts = postSeed.map((post) => post.get({ plain: true }));
     posts.reverse();
     
@@ -60,7 +60,7 @@ router.get('/post/:id', async (req, res) => {
 // This middleware will prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
   try {
-    
+    // Find the logged in user based on the session ID
     const userSeed = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Post }],
