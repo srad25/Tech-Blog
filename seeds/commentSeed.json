@@ -1,17 +1,11 @@
 [
     {
-    "comment_area": "I love this Blog",
-    "user_id": 1,
-    "post_id": 1
+    "content": "I love this Blog"
    },
    {
-    "comment_area": "By far this is the best blog",
-    "user_id": 2,
-    "post_id": 2 
+    "content": "By far this is the best blog"
    },
    {
-    "comment_area": "Where has this blog been all my life?!!",
-    "user_id": 3,
-    "post_id": 3
+    "content": "Where has this blog been all my life?!!"
    }
 ]

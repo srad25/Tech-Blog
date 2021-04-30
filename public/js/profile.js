@@ -5,7 +5,7 @@ const newFormHandler = async (event) => {
     const content = document.querySelector('#post-content').value.trim();
   
     if (title && content) {
-      const response = await fetch(`/api/post`, {
+      const response = await fetch(`/api/datapost`, {
         method: 'POST',
         body: JSON.stringify({ title, content }),
         headers: {
@@ -27,7 +27,7 @@ const newFormHandler = async (event) => {
     if (event.target.hasAttribute('data-id') && event.target.id === "delete") {
       const id = event.target.getAttribute('data-id');
   
-      const response = await fetch(`/api/post/${id}`, {
+      const response = await fetch(`/api/datapost/${id}`, {
         method: 'DELETE',
       });
   
@@ -51,7 +51,7 @@ const newFormHandler = async (event) => {
   
     if (event.target.hasAttribute('data-id') && event.target.id === "update") {
       const id = event.target.getAttribute('data-id');
-      const response = await fetch(`/api/post/${id}`, {
+      const response = await fetch(`/api/datapost/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -49,7 +49,7 @@ router.get('/datapost/:id', async (req, res) => {
     const post = postSeed.get({ plain: true });
 
     res.render('datapost', {
-      ...postIt,
+      ...post,
       logged_in: req.session.logged_in
     });
   } catch (err) {
