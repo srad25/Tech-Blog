@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../models');
+const { Datapost, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 // Get all posts and JOIN with user data
 router.get('/', async (req, res) => {
   try {
-    const postSeed = await Post.findAll({
+    const postSeed = await Datapost.findAll({
       include: [
         {
           model: User,
@@ -13,11 +13,11 @@ router.get('/', async (req, res) => {
       ],
     });
   // Serialize data so the template can read it
-    const posts = postSeed.map((post) => post.get({ plain: true }));
-    posts.reverse();
+    const dataposts = postSeed.map((datapost) => datapost.get({ plain: true }));
+    dataposts.reverse();
     
     res.render('homepage', { 
-      posts, 
+      dataposts, 
       logged_in: req.session.logged_in 
     });
   } catch (err) {
@@ -25,9 +25,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/post/:id', async (req, res) => {
+router.get('/datapost/:id', async (req, res) => {
   try {
-    const postSeed = await Post.findByPk(req.params.id, {
+    const postSeed = await Datapost.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -46,9 +46,9 @@ router.get('/post/:id', async (req, res) => {
       ]
     });
 
-    const postIt = postSeed.get({ plain: true });
+    const post = postSeed.get({ plain: true });
 
-    res.render('post', {
+    res.render('datapost', {
       ...postIt,
       logged_in: req.session.logged_in
     });
@@ -63,7 +63,7 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userSeed = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Post }],
+      include: [{ model: Datapost }],
     });
 
     const user = userSeed.get({ plain: true });
