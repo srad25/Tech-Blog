@@ -19,7 +19,7 @@ const newFormHandler = async (event) => {
         alert('Failed to create project');
       }
     } else {
-      alert("Please make sure you have entered a title and contents for this post");
+      alert("Please enter a title and contents for this post");
     }
   };
   
