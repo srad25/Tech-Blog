@@ -20,6 +20,8 @@ Your task this week is to build a CMS-style blog site similar to a Wordpress sit
 
 Application with only Jass css.
 
+![Screenhot](./public/assets/blog1.png ".")
+
 ![Screenhot](./public/assets/techblog3.png ".")
 
 
